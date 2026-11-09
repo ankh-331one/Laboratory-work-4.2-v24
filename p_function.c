@@ -1,14 +1,20 @@
+/*
+ * Лабораторная 4.2 Разработка подпрограммы, применяемой к идентичным по структуре частям одного объекта.
+ * Copyright (c) 2026 ankh-331one
+ *
+ * Licensed under the MIT License; see LICENSE file for details.
+ */
 #include "p_function.h"
 #include <malloc.h>
 
 int input(char a, int L_diapazon, int R_diapazon){
     int x;
     do{
-        printf("\nÂâåäèòå %c: ", a);
+        printf("\nВведите %c: ", a);
         scanf("%d", &x);
         if (x < L_diapazon || x > R_diapazon){
             printf("\n==========================================================================\n");
-            printf("Îøèáêà: Íàðóøåí äèàïàçîí: %c äîëæíî áûòü îò %d äî %d", a, L_diapazon, R_diapazon);
+            printf("Ошибка: Нарушен диапазон: %c должно быть от %d до %d", a, L_diapazon, R_diapazon);
             printf("\n==========================================================================\n");
         }
     }while (x < L_diapazon || x > R_diapazon);
@@ -29,7 +35,7 @@ void mass_input(FILE* in_file, double** *A, int m, int n){
 
 void mass_print(FILE* out_file, char a, double** A, int m, int n){
     int i, j;
-    fprintf(out_file, "\nÂâåä¸í ìàññèâ %c(%d*%d):\n", a, m, n);
+    fprintf(out_file, "\nВведён массив %c(%d*%d):\n", a, m, n);
     fprintf(out_file, " ___"); for (j = 0; j < n; j++) fprintf(out_file, " __________");
     fprintf(out_file, "\n|m\\n|"); for (j = 0; j < n; j++) fprintf(out_file, "%6d    |", j);
     fprintf(out_file, "\n ---"); for (j = 0; j < n; j++) fprintf(out_file, "+----------");
@@ -67,7 +73,7 @@ double cr_znach_m(double** A, int j, int m){
 }
 
 
-int find_id_max(double** A, int m, int n, int* flag){
+int find_id_max(double** A, int m, int n, int *flag){
     int id_max = 0;
     double cr_znach, max = 0;
     for (int j = 0; j < n; j++){
