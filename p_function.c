@@ -1,10 +1,7 @@
 #include "p_function.h"
-#include <locale.h>
 #include <malloc.h>
 
 int input(char a, int L_diapazon, int R_diapazon){
-    setlocale(0,"");
-    setlocale(LC_NUMERIC, "C");
     int x;
     do{
         printf("\nÂâåäèòå %c: ", a);
@@ -19,8 +16,6 @@ int input(char a, int L_diapazon, int R_diapazon){
 }
 
 void mass_input(FILE* in_file, double** *A, int m, int n){
-    setlocale(0,"");
-    setlocale(LC_NUMERIC, "C");
     int i, j;
     (*A) = (double**)malloc(m*sizeof(double*));
     for (i = 0; i < m; i++){
@@ -33,8 +28,6 @@ void mass_input(FILE* in_file, double** *A, int m, int n){
 }
 
 void mass_print(FILE* out_file, char a, double** A, int m, int n){
-    setlocale(0,"");
-    setlocale(LC_NUMERIC, "C");
     int i, j;
     fprintf(out_file, "\nÂâåä¸í ìàññèâ %c(%d*%d):\n", a, m, n);
     fprintf(out_file, " ___"); for (j = 0; j < n; j++) fprintf(out_file, " __________");
