@@ -37,7 +37,7 @@ void mass_print(FILE* out_file, char a, double** A, int m, int n){
     setlocale(LC_NUMERIC, "C");
     int i, j;
     fprintf(out_file, "\nÂâåä¸í ìàññèâ %c(%d*%d):\n", a, m, n);
-    fprintf(out_file, " ___"); for (j = 0; j < m; j++) fprintf(out_file, " __________");
+    fprintf(out_file, " ___"); for (j = 0; j < n; j++) fprintf(out_file, " __________");
     fprintf(out_file, "\n|m\\n|"); for (j = 0; j < n; j++) fprintf(out_file, "%6d    |", j);
     fprintf(out_file, "\n ---"); for (j = 0; j < n; j++) fprintf(out_file, "+----------");
     for (i = 0; i < m; i++){
