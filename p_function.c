@@ -57,7 +57,8 @@ void mass_free(double*** A, int m){
 }
 
 double cr_znach_m(double** A, int j, int m){
-    double sum = 0, k = 0;
+    double sum = 0;
+    int k = 0;
     for (int i = 0; i < m; i++){
         if (A[i][j] < 0){
             sum += A[i][j];
@@ -65,9 +66,11 @@ double cr_znach_m(double** A, int j, int m){
         }
     }
     if (k == 0){
-        k += 1;
+        sum = 0;
+    }else{
+        sum /= k;
     }
-    return sum/k;
+    return sum;
 }
 
 
