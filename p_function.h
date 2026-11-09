@@ -1,3 +1,9 @@
+/*
+ * Лабораторная 4.2 Разработка подпрограммы, применяемой к идентичным по структуре частям одного объекта.
+ * Copyright (c) 2026 ankh-331one
+ *
+ * Licensed under the MIT License; see LICENSE file for details.
+ */
 #ifndef P_FUNCTION.H
 #define P_FUNCTION.H
 
