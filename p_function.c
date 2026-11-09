@@ -7,11 +7,11 @@ int input(char a, int L_diapazon, int R_diapazon){
     setlocale(LC_NUMERIC, "C");
     int x;
     do{
-        printf("\nВведите %c: ", a);
+        printf("\nГ‚ГўГҐГ¤ГЁГІГҐ %c: ", a);
         scanf("%d", &x);
         if (x < L_diapazon || x > R_diapazon){
             printf("\n==========================================================================\n");
-            printf("Ошибка: Нарушен диапазон: %c должно быть от %d до %d", a, L_diapazon, R_diapazon);
+            printf("ГЋГёГЁГЎГЄГ : ГЌГ Г°ГіГёГҐГ­ Г¤ГЁГ ГЇГ Г§Г®Г­: %c Г¤Г®Г«Г¦Г­Г® ГЎГ»ГІГј Г®ГІ %d Г¤Г® %d", a, L_diapazon, R_diapazon);
             printf("\n==========================================================================\n");
         }
     }while (x < L_diapazon || x > R_diapazon);
@@ -36,7 +36,7 @@ void mass_print(FILE* out_file, char a, double** A, int m, int n){
     setlocale(0,"");
     setlocale(LC_NUMERIC, "C");
     int i, j;
-    fprintf(out_file, "\nВведён массив %c(%d*%d):\n", a, m, n);
+    fprintf(out_file, "\nГ‚ГўГҐГ¤ВёГ­ Г¬Г Г±Г±ГЁГўВ %c(%d*%d):\n", a, m, n);
     fprintf(out_file, " ___"); for (j = 0; j < m; j++) fprintf(out_file, " __________");
     fprintf(out_file, "\n|m\\n|"); for (j = 0; j < n; j++) fprintf(out_file, "%6d    |", j);
     fprintf(out_file, "\n ---"); for (j = 0; j < n; j++) fprintf(out_file, "+----------");
@@ -73,24 +73,16 @@ double cr_znach_m(double** A, int j, int m){
 
 int find_id_max(double** A, int m, int n, int* flag){
     int id_max = 0;
-    double cr_znach, max;
-    int j = 0;
-    while (j < n && !(*flag)){
+    double cr_znach, max = 0;
+    for (int j = 0; j < n; j++){
         cr_znach = cr_znach_m(A, j, m);
         if (cr_znach != 0){
-            max = cr_znach;
-            id_max = j;
-            (*flag) = 1;
-        }else j++;
-    }
-    j += 1;
-    while (j < n && flag){
-        cr_znach = cr_znach_m(A, j, m);
-        if (cr_znach > max && cr_znach != 0){
-            max = cr_znach;
-            id_max = j;
+            if (!(*flag) || cr_znach > max){
+                max = cr_znach;
+                id_max = j;
+                (*flag) = 1;
+            }
         }
-        j++;
     }
     return id_max;
 }
