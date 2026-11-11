@@ -9,13 +9,14 @@
 
 #include <stdio.h>
 
-int input(char a, int L_diapazon, int R_diapazon);
+int input(char name, int L_diapazon, int R_diapazon);
 
-void mass_input(FILE* in_file, double*** A, int m, int n);
-void mass_print(FILE* out_file, char a, double** A, int m, int n);
-void mass_free(double*** A, int m);
+void mass_input(FILE* f_in, double** *X, int nx, int mx);
+void mass_print(FILE* f_out, char name, double** X, int nx, int mx);
+void mass_free(double** *X, int nx);
 
-double cr_znach_m(double** A, int j, int m);
-int find_id_max(double** A, int m, int n, int* flag);
+double cr_znach_m(double** X, int j, int nx);
+int find_id_max(double** X, int nx, int mx, int *flag_find);
 
 #endif
+
