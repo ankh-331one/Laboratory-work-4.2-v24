@@ -72,7 +72,7 @@ double cr_znach_m(double** X, int j, int nx){
     }
     return sum;
 }
-
+/*
 int find_id_max(double** X, int nx, int mx, int *flag_find){
     int id_max = 0;
     double cr_znach, max = 0;
@@ -83,6 +83,36 @@ int find_id_max(double** X, int nx, int mx, int *flag_find){
                 max = cr_znach;
                 id_max = j;
                 (*flag_find) = 1;
+            }
+        }
+    }
+    return id_max;
+}
+*/
+int find_max(double** X, int nx, int mx, int *flag_find, double *max){
+    double cr_znach;
+    int id_max;
+    int j = 0;
+    while (j < mx && !(*flag_find)){
+        cr_znach = cr_znach_m(X, j, nx);
+        if (cr_znach != 0){
+            *max = cr_znach;
+            id_max = j;
+            (*flag_find) = 1;
+        }else j++;
+    }
+    return id_max;
+}
+
+int find_id_max(double** X, int nx, int mx, int *flag_find){
+    double cr_znach, max;
+    int j = find_max(X, nx, mx, &(*flag_find), &max), id_max = j;
+    if (*flag_find){
+        for (j += 1; j < mx; j++){
+            cr_znach = cr_znach_m(X, j, nx);
+            if (cr_znach > max && cr_znach != 0){
+                max = cr_znach;
+                id_max = j;
             }
         }
     }
